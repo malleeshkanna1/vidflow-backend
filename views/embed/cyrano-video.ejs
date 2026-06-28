@@ -1,0 +1,857 @@
+(() => {
+
+    "use strict";
+
+    const CUSTOMER_ID = "<%= customerId %>";
+    const VIDEO_DATA = <%- JSON.stringify(VIDEO_DATA) %>;
+
+    class CyranoVideo {
+
+
+        constructor(options = {}) {
+this.injectCSS();
+            if (!options.elem)
+                throw new Error("elem is required.");
+
+            this.container = document.querySelector(options.elem);
+
+            if (!this.container)
+                throw new Error("Container not found.");
+
+            this.customer = VIDEO_DATA.customer;
+
+            this.library = VIDEO_DATA;
+
+            this.videos = VIDEO_DATA.footages || [];
+
+            this.filteredVideos = [...this.videos];
+
+            this.selectedCategory = "All";
+
+            this.search = "";
+
+            this.currentVideo = null;
+this.currentIndex = -1;
+
+             this.render();
+
+    this.cache();
+
+    this.renderCategories();
+
+    this.renderVideos();
+
+    this.bindEvents();
+
+        }
+
+        injectCSS() {
+
+            if (document.getElementById("cv-style"))
+                return;
+
+            const link = document.createElement("link");
+
+            link.id = "cv-style";
+
+            link.rel = "stylesheet";
+
+            link.href = `${VIDEO_DATA.app_url}/embed/css/${CUSTOMER_ID}`;
+
+            document.head.appendChild(link);
+
+        }
+
+  render() { this.container.innerHTML = ` <div class="cv-wrapper"> ${this.renderHeader()} ${this.renderCategoryBar()} ${this.renderGrid()} ${this.renderModal()} </div> `; }
+
+renderCategoryBar() {
+
+    const categories = [
+        "All",
+        ...new Set(
+            this.videos.map(v => v.category)
+        )
+    ];
+
+    return `
+
+        <section class="cv-toolbar">
+
+            <div class="cv-categories">
+
+                ${categories.map(category => `
+
+                    <button
+                        class="cv-category ${this.selectedCategory === category ? "active" : ""}"
+                        data-category="${category}"
+                    >
+
+                        ${category}
+
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+        </section>
+
+    `;
+
+}
+
+
+renderGrid() {
+
+    return `
+
+        <section class="cv-grid">
+
+            ${this.filteredVideos
+                .map(video => this.renderCard(video))
+                .join("")}
+
+        </section>
+
+    `;
+
+}
+
+
+
+/*=========================================
+    VIDEO CARD
+=========================================*/
+
+renderCard(video) {
+
+    return `
+
+        <article
+            class="cv-card"
+            data-id="${video._id}"
+        >
+
+            <div class="cv-card-image">
+
+                <img
+                    src="${video.thumbnail}"
+                    alt="${video.name}"
+                    loading="lazy"
+                >
+
+                <div class="cv-card-overlay">
+
+                    <button
+                        class="cv-play-btn"
+                        type="button"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                        >
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+                <span class="cv-duration">
+
+                    ${video.duration}
+
+                </span>
+
+                <span class="cv-category-badge">
+
+                    ${video.category}
+
+                </span>
+
+            </div>
+
+            <div class="cv-card-content">
+
+                <h3 class="cv-card-title">
+
+                    ${video.name}
+
+                </h3>
+
+                <p class="cv-card-description">
+
+                    ${video.description}
+
+                </p>
+
+                <div class="cv-card-meta">
+
+                    <span>
+
+                        ${video.format}
+
+                    </span>
+
+                    <span>
+
+                        ${video.resolution}
+
+                    </span>
+
+                    <span>
+
+                        ${video.fps} FPS
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+/*=========================================
+    RENDER MODAL
+=========================================*/
+renderModal() {
+
+    return `
+
+        <div class="cv-modal">
+
+            <div class="cv-modal-backdrop"></div>
+
+            <div class="cv-modal-dialog">
+
+                <button
+                    class="cv-modal-close"
+                    type="button"
+                >
+                    &times;
+                </button>
+
+                <div class="cv-player-wrapper">
+
+                    <video
+                        class="cv-player"
+                        controls
+                        playsinline
+                        preload="metadata"
+                            
+
+                    >
+
+                        <track
+                            class="cv-track"
+                            kind="subtitles"
+                            srclang="en"
+                            label="English"
+                            default
+                        >
+
+                    </video>
+
+                </div>
+
+                <div class="cv-modal-body">
+
+                    <div class="cv-modal-header">
+
+                        <div>
+
+                            <h2 class="cv-modal-title"></h2>
+
+                            <div class="cv-modal-meta"></div>
+
+                        </div>
+
+                        <div class="cv-modal-actions">
+
+                            <button
+                                class="cv-prev-btn"
+                                type="button"
+                            >
+                                ←
+                            </button>
+
+                            <button
+                                class="cv-next-btn"
+                                type="button"
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <p class="cv-modal-description"></p>
+
+                    <div class="cv-modal-tags"></div>
+
+                    <div class="cv-related">
+
+                        <h3>More Videos</h3>
+
+                        <div class="cv-related-grid"></div>
+
+                    </div>
+
+                    <div class="cv-modal-footer">
+
+    <div class="cv-footer-brand">
+
+        <img
+            class="cv-footer-logo"
+            src="${this.customer.logo}"
+            alt="${this.customer.companyName}"
+        >
+
+        <div class="cv-footer-info">
+
+            <div class="cv-footer-company">
+
+                ${this.customer.companyName}
+
+            </div>
+
+            <div class="cv-footer-tagline">
+
+                ${this.customer.tagline}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <a
+        class="cv-footer-link"
+        href="${this.customer.website}"
+        target="_blank"
+    >
+
+        Visit Website
+
+    </a>
+
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+renderHeader() {
+
+    return `
+
+        <section class="cv-header">
+
+            <div class="cv-header-overlay"></div>
+
+            <div class="cv-brand">
+
+                <img
+                    src="${this.customer.logo}"
+                    alt="${this.customer.companyName}"
+                    class="cv-logo"
+                >
+
+                <div class="cv-brand-info">
+
+                    <span class="cv-company">
+
+                        ${this.customer.companyName}
+
+                    </span>
+
+                    <span class="cv-tagline">
+
+                        ${this.customer.tagline || ""}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="cv-hero">
+
+                <h1 class="cv-title">
+
+                    ${this.library.lib_heading}
+
+                </h1>
+
+                <span class="cv-description">
+
+                    ${this.library.description}
+
+                </span>
+
+            </div>
+
+            <div class="cv-search-box">
+
+                <svg
+                    class="cv-search-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                >
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    />
+
+                    <path
+                        d="M20 20L17 17"
+                    />
+
+                </svg>
+
+                <input
+                    class="cv-search-input"
+                    type="search"
+                    placeholder="Search videos..."
+                >
+
+            </div>
+
+        </section>
+
+    `;
+
+}
+
+/*=========================================
+    OPEN VIDEO
+=========================================*/
+
+openVideo(video) {
+
+    this.currentVideo = video;
+
+this.currentIndex = this.filteredVideos.findIndex(
+    item => item._id === video._id
+);
+
+    this.modalTitle.textContent = video.name;
+
+    this.modalDescription.textContent = video.description || "";
+
+    this.modalMeta.innerHTML = `
+        <span class="cv-meta-badge">${video.category}</span>
+        <span class="cv-meta-badge">${video.duration}</span>
+        <span class="cv-meta-badge">${video.format}</span>
+        <span class="cv-meta-badge">${video.resolution}</span>
+        <span class="cv-meta-badge">${video.codec}</span>
+    `;
+
+    this.modalTags.innerHTML = (video.tags || [])
+        .map(tag => `
+            <span class="cv-tag">
+                #${tag}
+            </span>
+        `)
+        .join("");
+
+    this.player.pause();
+
+    this.player.removeAttribute("src");
+
+    this.player.poster = video.thumbnail;
+
+    this.player.src = video.video;
+
+    if (video.subtitle) {
+
+        this.track.src = video.subtitle;
+
+    } else {
+
+        this.track.removeAttribute("src");
+
+    }
+
+    this.player.load();
+
+    this.modal.classList.add("show");
+
+    document.body.classList.add("cv-modal-open");
+
+    this.player.play().catch(() => {});
+
+    this.renderRelatedVideos();
+
+this.updateNavigation();
+
+}
+
+renderRelatedVideos() {
+
+    const related = this.filteredVideos
+        .filter(video => video._id !== this.currentVideo._id)
+        .slice(0, 4);
+
+    this.relatedGrid.innerHTML = related
+        .map(video => `
+
+            <div
+                class="cv-related-card"
+                data-id="${video._id}"
+            >
+
+                <img
+                    src="${video.thumbnail}"
+                    alt="${video.name}"
+                >
+
+                <span>
+
+                    ${video.name}
+
+                </span>
+
+            </div>
+
+        `)
+        .join("");
+
+}
+
+updateNavigation() {
+
+    this.prevButton.disabled =
+        this.currentIndex <= 0;
+
+    this.nextButton.disabled =
+        this.currentIndex >=
+        this.filteredVideos.length - 1;
+
+}
+
+/*=========================================
+    CLOSE VIDEO
+=========================================*/
+
+closeVideo() {
+
+    this.player.pause();
+
+    this.player.removeAttribute("src");
+
+    this.player.removeAttribute("poster");
+
+    this.track.removeAttribute("src");
+
+    this.player.load();
+
+    this.modal.classList.remove("show");
+
+    document.body.classList.remove("cv-modal-open");
+
+}
+
+filterVideos() {
+
+    this.filteredVideos = this.videos.filter(video => {
+
+        const text = [
+
+            video.name,
+
+            video.description,
+
+            video.category,
+
+            ...(video.tags || [])
+
+        ].join(" ").toLowerCase();
+
+        const searchMatch =
+            text.includes(this.search);
+
+        const categoryMatch =
+            this.selectedCategory === "All" ||
+            video.category === this.selectedCategory;
+
+        return searchMatch && categoryMatch;
+
+        
+    });
+
+    this.selectedCategory = category;
+
+this.filterVideos();
+
+this.renderCategories();
+}
+
+cache() {
+
+    this.wrapper =
+        this.container.querySelector(".cv-wrapper");
+
+    this.searchInput =
+        this.container.querySelector(".cv-search-input");
+
+    this.categoryContainer =
+        this.container.querySelector(".cv-categories");
+
+    this.grid =
+        this.container.querySelector(".cv-grid");
+
+    this.modal =
+        this.container.querySelector(".cv-modal");
+
+    this.player =
+        this.container.querySelector(".cv-player");
+
+    this.track =
+        this.container.querySelector(".cv-track");
+
+    this.modalTitle =
+        this.container.querySelector(".cv-modal-title");
+
+    this.modalMeta =
+        this.container.querySelector(".cv-modal-meta");
+
+    this.modalDescription =
+        this.container.querySelector(".cv-modal-description");
+
+    this.modalTags =
+        this.container.querySelector(".cv-modal-tags");
+
+        this.prevButton =
+    this.container.querySelector(".cv-prev-btn");
+
+this.nextButton =
+    this.container.querySelector(".cv-next-btn");
+
+this.relatedGrid =
+    this.container.querySelector(".cv-related-grid");
+
+}
+
+
+renderCategories() {
+
+    const categories = [
+
+        "All",
+
+        ...new Set(
+            this.videos.map(v => v.category)
+        )
+
+    ];
+
+    this.categoryContainer.innerHTML = categories.map(category => `
+
+        <button
+            class="cv-category ${this.selectedCategory === category ? "active" : ""}"
+            data-category="${category}"
+        >
+
+            ${category}
+
+        </button>
+
+    `).join("");
+
+}
+
+renderVideos() {
+
+    this.grid.innerHTML = this.filteredVideos
+        .map(video => this.renderCard(video))
+        .join("");
+
+}
+
+
+
+   bindEvents() {
+
+    // Search
+    this.searchInput.addEventListener("input", e => {
+
+        this.search = e.target.value
+            .trim()
+            .toLowerCase();
+
+        this.filterVideos();
+
+    });
+
+    // All click events
+    this.container.addEventListener("click", e => {
+
+        // Category Click
+        const category = e.target.closest(".cv-category");
+
+        if (category) {
+
+            this.selectedCategory = category.dataset.category;
+
+            this.renderCategories();
+
+            this.filterVideos();
+
+            return;
+
+        }
+
+        // Previous
+if (e.target.closest(".cv-prev-btn")) {
+
+    if (this.currentIndex > 0) {
+
+        this.openVideo(
+            this.filteredVideos[
+                this.currentIndex - 1
+            ]
+        );
+
+    }
+
+    return;
+
+}
+
+// Next
+if (e.target.closest(".cv-next-btn")) {
+
+    if (
+        this.currentIndex <
+        this.filteredVideos.length - 1
+    ) {
+
+        this.openVideo(
+            this.filteredVideos[
+                this.currentIndex + 1
+            ]
+        );
+
+    }
+
+    return;
+
+}
+
+// Suggested Videos
+const related = e.target.closest(".cv-related-card");
+
+if (related) {
+
+    const video = this.videos.find(
+        item => item._id === related.dataset.id
+    );
+
+    if (video) {
+
+        this.openVideo(video);
+
+    }
+
+    return;
+
+}
+
+        // Video Card Click
+        const card = e.target.closest(".cv-card");
+
+        if (card) {
+
+            const video = this.videos.find(
+                item => item._id === card.dataset.id
+            );
+
+            if (video) {
+
+                this.openVideo(video);
+
+            }
+
+            return;
+
+        }
+
+        // Close Button
+        if (e.target.closest(".cv-modal-close")) {
+
+            this.closeVideo();
+
+            return;
+
+        }
+
+        // Backdrop
+        if (e.target.classList.contains("cv-modal-backdrop")) {
+
+            this.closeVideo();
+
+            return;
+
+        }
+
+    });
+
+    this.player.addEventListener("ended", () => {
+
+    if (
+        this.currentIndex <
+        this.filteredVideos.length - 1
+    ) {
+
+        this.openVideo(
+            this.filteredVideos[
+                this.currentIndex + 1
+            ]
+        );
+
+    }
+
+});
+
+    // ESC Key
+    document.addEventListener("keydown", e => {
+
+        if (
+            e.key === "Escape" &&
+            this.modal.classList.contains("show")
+        ) {
+
+            this.closeVideo();
+
+        }
+
+    });
+
+}
+
+        destroy() {
+
+            this.container.innerHTML = "";
+
+        }
+
+    }
+
+    window.CyranoVideo = CyranoVideo;
+
+})();

@@ -1,0 +1,2210 @@
+/*=========================================
+    CYRANO VIDEO
+=========================================*/
+
+.cv-wrapper{
+    --cv-primary:<%= VIDEO_DATA.customer.brandColor1 %>;
+
+    --cv-secondary:<%= VIDEO_DATA.customer.brandColor2 %>;
+
+    --cv-white:#ffffff;
+
+    --cv-bg:#f6f8fb;
+
+    --cv-surface:#ffffff;
+
+    --cv-text:#1f2937;
+
+    --cv-text-light:#6b7280;
+
+    --cv-border:#e5e7eb;
+
+    --cv-shadow:
+        0 12px 40px rgba(15,23,42,.08);
+
+    --cv-shadow-lg:
+        0 30px 80px rgba(15,23,42,.14);
+
+    --cv-radius:22px;
+
+    --cv-transition:.3s ease;
+
+    --cv-font:
+        Inter,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    isolation:isolate;
+
+}
+
+/*=========================================
+    RESET
+=========================================*/
+
+.cv-wrapper *,
+.cv-wrapper *::before,
+.cv-wrapper *::after{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+/*=========================================
+    ROOT
+=========================================*/
+
+.cv-wrapper{
+
+    width:100%;
+
+    max-width:1500px;
+
+    margin:auto;
+
+    font-family:var(--cv-font);
+
+    color:var(--cv-text);
+
+    line-height:1.5;
+
+    background:transparent;
+
+}
+
+/*=========================================
+    COMMON
+=========================================*/
+
+.cv-wrapper img{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+    user-select:none;
+
+}
+
+.cv-wrapper button{
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+    background:none;
+
+}
+
+.cv-wrapper input{
+
+    border:none;
+
+    outline:none;
+
+    font-family:inherit;
+
+}
+
+.cv-wrapper a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+.cv-wrapper svg{
+
+    display:block;
+
+}
+
+.cv-wrapper video{
+
+    display:block;
+
+    width:100%;
+
+}
+
+/*=========================================
+    TYPOGRAPHY
+=========================================*/
+
+.cv-wrapper h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+.cv-wrapper h2{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.cv-wrapper h3{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.cv-wrapper p{
+
+    font-size:15px;
+
+    color:var(--cv-text-light);
+
+}
+
+/*=========================================
+    UTILITIES
+=========================================*/
+
+.cv-hidden{
+
+    display:none !important;
+
+}
+
+.cv-flex{
+
+    display:flex;
+
+}
+
+.cv-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/*=========================================
+    SCROLLBAR
+=========================================*/
+
+.cv-wrapper ::-webkit-scrollbar{
+
+    width:8px;
+
+    height:8px;
+
+}
+
+.cv-wrapper ::-webkit-scrollbar-thumb{
+
+    background:rgba(0,0,0,.15);
+
+    border-radius:999px;
+
+}
+
+.cv-wrapper ::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/*=========================================
+    SELECTION
+=========================================*/
+
+.cv-wrapper ::selection{
+
+    background:var(--cv-primary);
+
+    color:#fff;
+
+}
+
+/*=========================================
+    TRANSITIONS
+=========================================*/
+
+.cv-wrapper button,
+.cv-wrapper input,
+.cv-wrapper img,
+.cv-wrapper a{
+
+    transition:var(--cv-transition);
+
+}
+
+/*=========================================
+    HERO
+=========================================*/
+
+.cv-header{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:60px;
+
+    border-radius:28px;
+
+    margin-bottom:36px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cv-primary),
+            var(--cv-secondary)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(16,51,44,.18);
+
+    color:#fff;
+    min-height:380px;
+
+}
+
+/*=========================================
+    HERO OVERLAY
+=========================================*/
+
+.cv-header-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(255,255,255,.18),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(255,255,255,.12),
+            transparent 40%
+        );
+
+}
+
+/*=========================================
+    BRAND
+=========================================*/
+
+.cv-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:48px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.cv-logo{
+
+    width:64px !important;
+
+    height:64px;
+
+    border-radius:18px;
+
+       object-fit:contain;
+
+
+    background:#fff;
+
+    padding:4px;
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.15);
+
+}
+
+.cv-brand-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.cv-company{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#fff;
+
+}
+
+.cv-tagline{
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    opacity:.9;
+
+}
+
+/*=========================================
+    HERO CONTENT
+=========================================*/
+
+.cv-hero{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:760px;
+
+}
+
+.cv-title{
+
+    color:#fff;
+
+    margin-bottom:18px;
+
+}
+
+.cv-description{
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,.88);
+
+}
+
+/*=========================================
+    SEARCH
+=========================================*/
+
+.cv-search-box{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:18px 24px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.24);
+
+}
+
+.cv-search-icon{
+
+    width:22px;
+
+    height:22px;
+
+    stroke:#fff;
+
+    stroke-width:2;
+
+    fill:none;
+
+    opacity:.9;
+
+    flex-shrink:0;
+
+}
+
+.cv-search-input{
+
+    width:100%;
+
+    background:transparent;
+
+    color:#fff;
+
+    font-size:16px;
+
+}
+
+.cv-search-input::placeholder{
+
+    color:rgba(255,255,255,.75);
+
+}
+
+.cv-search-box:focus-within{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 16px 40px rgba(0,0,0,.18);
+
+}
+
+/*=========================================
+    HERO DECORATION
+=========================================*/
+
+.cv-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+
+    height:260px;
+
+    right:-120px;
+
+    top:-120px;
+
+    border-radius:50%;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+}
+
+.cv-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    left:-60px;
+
+    bottom:-60px;
+
+    border-radius:50%;
+
+    background:
+
+        rgba(255,255,255,.05);
+
+}
+
+/*=========================================
+    TOOLBAR
+=========================================*/
+
+.cv-toolbar{
+
+    margin-bottom:36px;
+
+}
+
+/*=========================================
+    CATEGORIES
+=========================================*/
+
+.cv-categories{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding:4px 2px 12px;
+
+    scrollbar-width:none;
+
+}
+
+.cv-categories::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/*=========================================
+    CATEGORY BUTTON
+=========================================*/
+
+.cv-category{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    white-space:nowrap;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:#fff;
+
+    border:1px solid var(--cv-border);
+
+    color:var(--cv-text);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:all .25s ease;
+
+    box-shadow:
+
+        0 8px 25px rgba(15,23,42,.05);
+
+}
+
+/*=========================================
+    HOVER
+=========================================*/
+
+.cv-category:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--cv-primary);
+
+    color:var(--cv-primary);
+
+    box-shadow:
+
+        0 15px 35px rgba(15,23,42,.10);
+
+}
+
+/*=========================================
+    ACTIVE
+=========================================*/
+
+.cv-category.active{
+
+    color:#fff;
+
+    border-color:transparent;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--cv-primary),
+            var(--cv-secondary)
+        );
+
+    box-shadow:
+
+        0 18px 40px rgba(16,51,44,.22);
+
+}
+
+/*=========================================
+    ACTIVE HOVER
+=========================================*/
+
+.cv-category.active:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/*=========================================
+    CLICK EFFECT
+=========================================*/
+
+.cv-category:active{
+
+    transform:scale(.96);
+
+}
+
+/*=========================================
+    FOCUS
+=========================================*/
+
+.cv-category:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+
+        0 0 0 4px rgba(255,255,255,.4),
+
+        0 0 0 7px var(--cv-primary);
+
+}
+
+/*=========================================
+    GRID
+=========================================*/
+
+.cv-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(320px,1fr));
+
+    gap:30px;
+
+    margin-bottom:50px;
+
+}
+
+/*=========================================
+    CARD
+=========================================*/
+
+.cv-card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    box-shadow:
+        0 12px 35px rgba(15,23,42,.06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    cursor:pointer;
+
+}
+
+.cv-card:hover{
+
+    transform:
+        translateY(-10px);
+
+    box-shadow:
+        0 30px 70px rgba(15,23,42,.14);
+
+    border-color:
+
+        rgba(108,211,155,.25);
+}
+
+/*=========================================
+    IMAGE
+=========================================*/
+
+.cv-card-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    aspect-ratio:16/9;
+
+    background:#edf2f7;
+
+}
+
+.cv-card-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+        transform .5s ease;
+
+}
+
+.cv-card:hover .cv-card-image img{
+
+    transform:scale(1.08);
+
+}
+
+/*=========================================
+    OVERLAY
+=========================================*/
+
+.cv-card-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.05)
+        );
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+.cv-card:hover .cv-card-overlay{
+
+    opacity:1;
+
+}
+
+
+/*=========================================
+    PLAY BUTTON
+=========================================*/
+
+.cv-play-btn{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.94);
+
+    display:flex;
+
+    align-items:center;
+    backdrop-filter:blur(10px);
+
+    justify-content:center;
+
+    transition:.3s;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.22);
+
+}
+
+.cv-play-btn svg{
+
+    width:28px;
+
+    height:28px;
+
+    color:var(--cv-primary);
+
+    margin-left:4px;
+
+}
+
+.cv-card:hover .cv-play-btn{
+
+    transform:scale(1.12);
+
+}
+
+/*=========================================
+    DURATION
+=========================================*/
+
+.cv-duration{
+
+    position:absolute;
+
+    right:14px;
+
+    bottom:14px;
+
+    padding:6px 10px;
+
+    border-radius:999px;
+
+    background:rgba(0,0,0,.65);
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    backdrop-filter:blur(8px);
+
+}
+
+/*=========================================
+    CATEGORY
+=========================================*/
+
+.cv-category-badge{
+
+    position:absolute;
+
+    left:14px;
+
+    top:14px;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:#fff;
+
+    color:var(--cv-primary);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-transform:capitalize;
+
+}
+
+/*=========================================
+    CONTENT
+=========================================*/
+
+.cv-card-content{
+
+    padding:22px;
+
+}
+
+/*=========================================
+    TITLE
+=========================================*/
+
+.cv-card-title{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:var(--cv-text);
+
+    margin-bottom:10px;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+}
+
+/*=========================================
+    DESCRIPTION
+=========================================*/
+
+.cv-card-description{
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    color:var(--cv-text-light);
+
+    margin-bottom:20px;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+}
+
+/*=========================================
+    META
+=========================================*/
+
+.cv-card-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.cv-card-meta span{
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:#f5f7fb;
+
+    color:#64748b;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+    EMPTY
+=========================================*/
+
+.cv-empty{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    border-radius:24px;
+
+    background:#fff;
+
+    border:2px dashed var(--cv-border);
+
+}
+
+.cv-empty h3{
+
+    margin-bottom:12px;
+
+}
+
+.cv-empty p{
+
+    color:var(--cv-text-light);
+
+}
+
+/*=========================================
+    MODAL
+=========================================*/
+
+.cv-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:999999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.3s ease;
+
+}
+
+.cv-modal.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*=========================================
+    BACKDROP
+=========================================*/
+
+.cv-modal-backdrop{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(8,15,30,.72);
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
+
+}
+
+/*=========================================
+    DIALOG
+=========================================*/
+
+.cv-modal-dialog{
+
+    position:relative;
+
+    width:min(1200px,92vw);
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.28);
+
+    transform:translateY(40px) scale(.96);
+
+    transition:.35s ease;
+
+    z-index:2;
+
+}
+
+.cv-modal.show .cv-modal-dialog{
+
+    transform:translateY(0) scale(1);
+
+}
+
+/*=========================================
+    CLOSE
+=========================================*/
+
+.cv-modal-close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.95);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.12);
+
+    font-size:26px;
+
+    z-index:5;
+
+}
+
+.cv-modal-close:hover{
+
+    background:var(--cv-primary);
+
+    color:#fff;
+
+}
+
+/*=========================================
+    PLAYER
+=========================================*/
+
+.cv-player-wrapper{
+
+    background:#000;
+
+    aspect-ratio:16/9;
+
+}
+
+.cv-player{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    background:#000;
+
+}
+
+/*=========================================
+    BODY
+=========================================*/
+
+.cv-modal-body{
+
+    padding:32px;
+
+}
+
+/*=========================================
+    HEADER
+=========================================*/
+
+.cv-modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    margin-bottom:20px;
+
+}
+
+.cv-modal-title{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+    color:var(--cv-text);
+
+}
+
+/*=========================================
+    META
+=========================================*/
+
+.cv-modal-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.cv-meta-badge{
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    background:#f3f5f9;
+
+    color:#64748b;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+    ACTIONS
+=========================================*/
+
+.cv-modal-actions{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.cv-prev-btn,
+.cv-next-btn{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:#f3f5f9;
+
+    font-size:18px;
+
+    transition:.25s;
+
+}
+
+.cv-prev-btn:hover,
+.cv-next-btn:hover{
+
+    background:var(--cv-primary);
+
+    color:#fff;
+
+}
+
+.cv-prev-btn:disabled,
+.cv-next-btn:disabled{
+
+    opacity:.35;
+
+    cursor:not-allowed;
+
+}
+
+/*=========================================
+    DESCRIPTION
+=========================================*/
+
+.cv-modal-description{
+
+    margin:24px 0;
+
+    font-size:16px;
+
+    line-height:1.8;
+
+}
+
+/*=========================================
+    TAGS
+=========================================*/
+
+.cv-modal-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:32px;
+
+}
+
+.cv-tag{
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:rgba(108,211,155,.12);
+
+    color:var(--cv-primary);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+    RELATED
+=========================================*/
+
+.cv-related{
+
+    margin-top:40px;
+
+}
+
+.cv-related h3{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+    color:var(--cv-text);
+
+}
+
+/*=========================================
+    RELATED GRID
+=========================================*/
+
+.cv-related-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+/*=========================================
+    RELATED CARD
+=========================================*/
+
+.cv-related-card{
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    border:1px solid var(--cv-border);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:
+        0 8px 24px rgba(15,23,42,.05);
+
+}
+
+.cv-related-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(15,23,42,.12);
+
+}
+
+.cv-related-card img{
+
+    width:100%;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    transition:.35s;
+
+}
+
+.cv-related-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.cv-related-card span{
+
+    display:block;
+
+    padding:16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--cv-text);
+
+    line-height:1.5;
+
+}
+
+/*=========================================
+    MODAL FOOTER
+=========================================*/
+
+.cv-modal-footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    margin-top:40px;
+
+    padding-top:24px;
+
+    border-top:1px solid var(--cv-border);
+
+}
+
+.cv-footer-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.cv-footer-logo{
+
+    width:46px !important;
+
+    height:46px;
+
+    border-radius:12px;
+
+    object-fit:cover;
+
+    background:#fff;
+
+    border:1px solid var(--cv-border);
+
+}
+
+.cv-footer-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.cv-footer-company{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:var(--cv-text);
+
+}
+
+.cv-footer-tagline{
+
+    margin-top:3px;
+
+    font-size:13px;
+
+    color:var(--cv-text-light);
+
+}
+
+/*=========================================
+    WEBSITE BUTTON
+=========================================*/
+
+.cv-footer-link{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cv-primary),
+            var(--cv-secondary)
+        );
+
+    color:#fff !important;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:
+        0 14px 35px rgba(16,51,44,.18);
+
+}
+
+.cv-footer-link:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 22px 50px rgba(16,51,44,.28);
+
+}
+
+/*=========================================
+    MODAL SCROLLBAR
+=========================================*/
+
+.cv-modal-dialog::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.cv-modal-dialog::-webkit-scrollbar-thumb{
+
+    background:rgba(0,0,0,.18);
+
+    border-radius:999px;
+
+}
+
+.cv-modal-dialog::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/*=========================================
+    BODY LOCK
+=========================================*/
+
+body.cv-modal-open{
+
+    overflow:hidden;
+
+}
+
+/*=========================================
+    LARGE DESKTOP
+=========================================*/
+
+@media (max-width:1400px){
+
+    .cv-wrapper{
+
+        max-width:1200px;
+
+    }
+
+    .cv-grid{
+
+        grid-template-columns:
+            repeat(auto-fill,minmax(300px,1fr));
+
+    }
+
+}
+
+/*=========================================
+    LAPTOP
+=========================================*/
+
+@media (max-width:1200px){
+
+    .cv-header{
+
+        padding:48px;
+
+    }
+
+    .cv-title{
+
+        font-size:36px;
+
+    }
+
+    .cv-grid{
+
+        grid-template-columns:
+            repeat(auto-fill,minmax(280px,1fr));
+
+        gap:24px;
+
+    }
+
+    .cv-modal-dialog{
+
+        width:95vw;
+
+    }
+
+}
+
+/*=========================================
+    TABLET
+=========================================*/
+
+@media (max-width:992px){
+
+    .cv-header{
+
+        padding:40px;
+
+    }
+
+    .cv-brand{
+
+        margin-bottom:30px;
+
+    }
+
+    .cv-title{
+
+        font-size:32px;
+
+    }
+
+    .cv-description{
+
+        font-size:15px;
+
+    }
+
+    .cv-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+    .cv-modal-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .cv-modal-actions{
+
+        width:100%;
+
+        justify-content:flex-end;
+
+    }
+
+    .cv-related-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+/*=========================================
+    MOBILE
+=========================================*/
+
+@media (max-width:768px){
+
+    .cv-header{
+
+        padding:28px;
+
+        border-radius:20px;
+
+    }
+
+    .cv-brand{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .cv-brand-info{
+
+        align-items:center;
+
+    }
+
+    .cv-title{
+
+        font-size:28px;
+
+        text-align:center;
+
+    }
+
+    .cv-description{
+
+        text-align:center;
+
+    }
+
+    .cv-search-box{
+
+        padding:14px 18px;
+
+    }
+
+    .cv-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .cv-card{
+
+        border-radius:18px;
+
+    }
+
+    .cv-modal-dialog{
+
+        width:100vw;
+
+        height:100vh;
+
+        max-height:none;
+
+        border-radius:0;
+
+    }
+
+    .cv-modal-body{
+
+        padding:24px;
+
+    }
+
+    .cv-modal-title{
+
+        font-size:24px;
+
+    }
+
+    .cv-modal-meta{
+
+        gap:8px;
+
+    }
+
+    .cv-related-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .cv-modal-footer{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .cv-footer-link{
+
+        width:100%;
+
+    }
+
+}
+
+/*=========================================
+    SMALL MOBILE
+=========================================*/
+
+@media (max-width:480px){
+
+    .cv-header{
+
+        padding:22px;
+
+    }
+
+    .cv-logo{
+
+        width:54px;
+
+        height:54px;
+
+    }
+
+    .cv-company{
+
+        font-size:18px;
+
+    }
+
+    .cv-title{
+
+        font-size:24px;
+
+    }
+
+    .cv-search-input{
+
+        font-size:15px;
+
+    }
+
+    .cv-category{
+
+        padding:10px 16px;
+
+        font-size:13px;
+
+    }
+
+    .cv-play-btn{
+
+        width:56px;
+
+        height:56px;
+
+    }
+
+    .cv-play-btn svg{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+    .cv-card-content{
+
+        padding:18px;
+
+    }
+
+    .cv-card-title{
+
+        font-size:18px;
+
+    }
+
+    .cv-modal-body{
+
+        padding:18px;
+
+    }
+
+    .cv-modal-title{
+
+        font-size:22px;
+
+    }
+
+}
+/*=========================================
+    FADE ANIMATIONS
+=========================================*/
+
+.cv-card,
+.cv-related-card,
+.cv-category,
+.cv-footer-link,
+.cv-play-btn{
+
+    transition:
+        all .3s cubic-bezier(.4,0,.2,1);
+
+}
+
+/*=========================================
+    IMAGE FADE
+=========================================*/
+
+.cv-card-image img,
+.cv-related-card img{
+
+    opacity:0;
+
+    animation:
+        cvImageFade .5s ease forwards;
+
+}
+
+@keyframes cvImageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(1.03);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/*=========================================
+    MODAL ANIMATION
+=========================================*/
+
+.cv-modal.show .cv-modal-dialog{
+
+    animation:
+        cvModalIn .35s ease;
+
+}
+
+@keyframes cvModalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(30px)
+            scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+/*=========================================
+    BUTTON HOVER
+=========================================*/
+
+.cv-play-btn:hover{
+
+    background:var(--cv-primary);
+
+}
+
+.cv-play-btn:hover svg{
+
+    color:#fff;
+
+}
+
+/*=========================================
+    SEARCH
+=========================================*/
+
+.cv-search-input:focus{
+
+    outline:none;
+
+}
+
+.cv-search-box{
+
+    transition:
+        all .25s ease;
+
+}
+
+.cv-search-box:hover{
+
+    background:
+        rgba(255,255,255,.22);
+
+}
+
+.cv-search-box:focus-within{
+
+    border-color:
+        rgba(255,255,255,.45);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.15);
+
+}
+
+/*=========================================
+    PLAYER
+=========================================*/
+
+.cv-player{
+
+    border-radius:
+        28px 28px 0 0;
+
+    overflow:hidden;
+
+}
+
+/*=========================================
+    EMPTY
+=========================================*/
+
+.cv-empty{
+
+    animation:
+        cvFade .5s ease;
+
+}
+
+@keyframes cvFade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/*=========================================
+    LOADING
+=========================================*/
+
+.cv-skeleton{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#eceff3;
+
+}
+
+.cv-skeleton::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    transform:
+        translateX(-100%);
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.7),
+
+            transparent
+
+        );
+
+    animation:
+        cvSkeleton 1.4s infinite;
+
+}
+
+@keyframes cvSkeleton{
+
+    to{
+
+        transform:
+            translateX(100%);
+
+    }
+
+}
+
+/*=========================================
+    FOCUS
+=========================================*/
+
+.cv-wrapper button:focus-visible,
+.cv-wrapper input:focus-visible,
+.cv-wrapper a:focus-visible{
+
+    outline:3px solid
+        rgba(108,211,155,.35);
+
+    outline-offset:2px;
+
+}
+
+/*=========================================
+    REDUCED MOTION
+=========================================*/
+
+@media (prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}
+
+/*=========================================
+    PRINT
+=========================================*/
+
+@media print{
+
+    .cv-modal,
+    .cv-search-box,
+    .cv-toolbar{
+
+        display:none !important;
+
+    }
+
+}

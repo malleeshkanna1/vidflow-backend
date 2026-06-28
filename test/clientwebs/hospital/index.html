@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GenovaSuite Hospital</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6cd39b",
+              secondary: "#10332c",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Inter, sans-serif;
+      }
+
+      .hero-bg {
+        background:
+          linear-gradient(rgba(16, 51, 44, 0.82), rgba(16, 51, 44, 0.82)),
+          url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1500&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Navbar -->
+
+    <nav class=" w-full bg-white shadow z-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg">
+              <i class="bx bxs-clinic text-secondary text-2xl"></i>
+            </div>
+
+            <h1 class="text-2xl font-bold text-secondary">GenovaSuite</h1>
+          </div>
+
+          <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#home" class="hover:text-primary">Home</a>
+
+            <a href="#services" class="hover:text-primary">Services</a>
+
+            <a href="#doctors" class="hover:text-primary">Doctors</a>
+            
+            <a href="./patient-video-library.html" class="hover:text-primary">Patien Video Library</a>
+
+            <a href="#about" class="hover:text-primary">About</a>
+
+            <a href="#contact" class="hover:text-primary">Contact</a>
+          </div>
+
+          <button id="menuBtn" class="md:hidden">
+            <i class="bx bx-menu text-3xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="hidden md:hidden bg-white shadow">
+        <div class="flex flex-col p-5 space-y-4">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#doctors">Doctors</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+
+    <section id="home" class="hero-bg min-h-screen flex items-center">
+      <div class="max-w-7xl mx-auto px-6 text-white">
+        <div class="max-w-2xl">
+          <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+            Your Health Is Our
+            <span class="text-primary"> Priority </span>
+          </h1>
+
+          <p class="mt-6 text-lg text-gray-200">
+            Advanced medical care, experienced specialists, and compassionate
+            treatment—all under one roof.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <button
+              class="bg-primary text-secondary font-bold px-7 py-4 rounded-lg hover:scale-105 duration-300"
+            >
+              Book Appointment
+            </button>
+
+            <a
+              href="./patient-video-library.html"
+              class="border-2 border-white px-7 py-4 rounded-lg cursor-pointer hover:bg-white hover:text-secondary duration-300"
+            >
+              Patient Video Library
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="shadow-lg rounded-xl p-8 text-center">
+            <i class="bx bx-plus-medical text-6xl text-primary"></i>
+
+            <h3 class="text-2xl font-bold mt-4 text-secondary">
+              Emergency Care
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+              24/7 emergency response with experienced medical professionals.
+            </p>
+          </div>
+
+          <div class="shadow-lg rounded-xl p-8 text-center">
+            <i class="bx bx-user-plus text-6xl text-primary"></i>
+
+            <h3 class="text-2xl font-bold mt-4 text-secondary">
+              Expert Doctors
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+              Qualified specialists providing exceptional patient care.
+            </p>
+          </div>
+
+          <div class="shadow-lg rounded-xl p-8 text-center">
+            <i class="bx bx-buildings text-6xl text-primary"></i>
+
+            <h3 class="text-2xl font-bold mt-4 text-secondary">
+              Modern Facility
+            </h3>
+
+            <p class="mt-4 text-gray-600">
+              State-of-the-art equipment and advanced technology.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+
+    <section id="services" class="bg-gray-50 py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-secondary">
+          Our Services
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+          <div class="bg-white rounded-xl shadow p-8">
+            <i class="bx bx-heart text-5xl text-primary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Cardiology</h3>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-8">
+            <i class="bx bx-brain text-5xl text-primary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Neurology</h3>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-8">
+            <i class="bx bx-body text-5xl text-primary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Orthopedics</h3>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-8">
+            <i class="bx bx-test-tube text-5xl text-primary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Laboratory</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors -->
+
+    <section id="doctors" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-secondary">
+          Meet Our Doctors
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-10 mt-14">
+          <div class="shadow-xl rounded-xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80"
+            />
+
+            <div class="p-6">
+              <h3 class="font-bold text-xl">Dr. Emily Watson</h3>
+
+              <p class="text-primary">Cardiologist</p>
+            </div>
+          </div>
+
+          <div class="shadow-xl rounded-xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
+            />
+
+            <div class="p-6">
+              <h3 class="font-bold text-xl">Dr. Michael James</h3>
+
+              <p class="text-primary">Neurologist</p>
+            </div>
+          </div>
+
+          <div class="shadow-xl rounded-xl overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80"
+            />
+
+            <div class="p-6">
+              <h3 class="font-bold text-xl">Dr. Sarah Johnson</h3>
+
+              <p class="text-primary">Orthopedic Surgeon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+
+    <section id="about" class="bg-secondary text-white py-20">
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div>
+          <h2 class="text-4xl font-bold">Why Choose GenovaSuite?</h2>
+
+          <p class="mt-6 text-gray-300">
+            We combine advanced healthcare technology, world-class doctors, and
+            personalized patient care to ensure the best possible medical
+            experience.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mt-8">
+            <div>
+              <h1 class="text-5xl font-bold text-primary">20+</h1>
+
+              <p>Years Experience</p>
+            </div>
+
+            <div>
+              <h1 class="text-5xl font-bold text-primary">150+</h1>
+
+              <p>Doctors</p>
+            </div>
+
+            <div>
+              <h1 class="text-5xl font-bold text-primary">25K+</h1>
+
+              <p>Happy Patients</p>
+            </div>
+
+            <div>
+              <h1 class="text-5xl font-bold text-primary">24/7</h1>
+
+              <p>Emergency</p>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="rounded-xl shadow-xl"
+          src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?auto=format&fit=crop&w=900&q=80"
+        />
+      </div>
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact" class="py-20">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-secondary">
+          Book Appointment
+        </h2>
+
+        <form class="mt-12 grid gap-6">
+          <input
+            type="text"
+            placeholder="Full Name"
+            class="border rounded-lg p-4"
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            class="border rounded-lg p-4"
+          />
+
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            class="border rounded-lg p-4"
+          />
+
+          <textarea
+            rows="5"
+            placeholder="Message"
+            class="border rounded-lg p-4"
+          ></textarea>
+
+          <button
+            class="bg-primary text-secondary py-4 rounded-lg font-bold hover:bg-secondary hover:text-white duration-300"
+          >
+            Send Request
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-secondary text-white py-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div>
+            <h2 class="text-3xl font-bold">GenovaSuite</h2>
+
+            <p class="text-gray-400 mt-2">Quality Healthcare For Everyone</p>
+          </div>
+
+          <div class="flex gap-5 mt-6 md:mt-0 text-3xl">
+            <i
+              class="bx bxl-facebook-circle hover:text-primary cursor-pointer"
+            ></i>
+
+            <i class="bx bxl-instagram hover:text-primary cursor-pointer"></i>
+
+            <i class="bx bxl-twitter hover:text-primary cursor-pointer"></i>
+
+            <i
+              class="bx bxl-linkedin-square hover:text-primary cursor-pointer"
+            ></i>
+          </div>
+        </div>
+
+        <hr class="my-8 border-gray-600" />
+
+        <p class="text-center text-gray-400">
+          © 2026 GenovaSuite Hospital. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById("menuBtn");
+
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuBtn.onclick = () => {
+        mobileMenu.classList.toggle("hidden");
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Coimbatore Hr Sec School</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0e2e54",
+              secondary: "#2a80b3",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: 0.7s;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navbar -->
+
+    <nav class=" w-full bg-white shadow z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+        <div>
+          <h1 class="text-2xl font-bold text-primary">
+            Coimbatore Hr Sec School
+          </h1>
+        </div>
+
+        <ul class="hidden md:flex space-x-7 font-medium">
+          <li><a href="#home" class="hover:text-secondary">Home</a></li>
+
+          <li><a href="#about" class="hover:text-secondary">About</a></li>
+
+          <li><a href="./storytelling.html" class="hover:text-secondary">Storytelling</a></li>
+
+          <li><a href="#courses" class="hover:text-secondary">Academics</a></li>
+
+          <li><a href="#gallery" class="hover:text-secondary">Gallery</a></li>
+
+          <li><a href="#news" class="hover:text-secondary">News</a></li>
+
+          <li><a href="#contact" class="hover:text-secondary">Contact</a></li>
+        </ul>
+
+        <button id="menuBtn" class="md:hidden text-3xl text-primary">
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="hidden bg-primary text-white">
+        <a href="#home" class="block p-4">Home</a>
+
+        <a href="#about" class="block p-4">About</a>
+
+        <a href="#courses" class="block p-4">Academics</a>
+
+        <a href="#gallery" class="block p-4">Gallery</a>
+
+        <a href="#news" class="block p-4">News</a>
+
+        <a href="#contact" class="block p-4">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+
+    <section id="home" class="pt-28 bg-primary text-white">
+      <div
+        class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6 py-20"
+      >
+        <div>
+          <h1 class="text-5xl font-bold leading-tight">
+            Empowering Young Minds for a Brighter Tomorrow
+          </h1>
+
+          <p class="mt-6 text-lg text-gray-200">
+            Welcome to Coimbatore Hr Sec School, where excellence in academics,
+            discipline, values, and innovation come together to shape future
+            leaders.
+          </p>
+
+          <div class="mt-8 flex gap-4">
+            <button class="bg-secondary px-6 py-3 rounded-lg hover:bg-blue-600">
+              Admission Open
+            </button>
+
+            <button class="border px-6 py-3 rounded-lg">Explore</button>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=900"
+            class="rounded-xl shadow-2xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+
+    <section id="about" class="py-20 reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center">
+          <h2 class="text-4xl font-bold text-primary">About Our School</h2>
+
+          <p class="mt-4 text-gray-600 max-w-3xl mx-auto">
+            Coimbatore Hr Sec School provides quality education with modern
+            teaching methods, experienced faculty, and excellent infrastructure.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-14">
+          <div class="bg-white shadow-lg rounded-xl p-8">
+            <i class="bx bxs-graduation text-5xl text-secondary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Quality Education</h3>
+
+            <p class="mt-3 text-gray-600">
+              Student-centered curriculum promoting academic excellence.
+            </p>
+          </div>
+
+          <div class="bg-white shadow-lg rounded-xl p-8">
+            <i class="bx bx-book-open text-5xl text-secondary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Smart Learning</h3>
+
+            <p class="mt-3 text-gray-600">
+              Interactive classrooms with digital education.
+            </p>
+          </div>
+
+          <div class="bg-white shadow-lg rounded-xl p-8">
+            <i class="bx bx-football text-5xl text-secondary"></i>
+
+            <h3 class="font-bold text-xl mt-4">Sports & Activities</h3>
+
+            <p class="mt-3 text-gray-600">
+              Balanced focus on academics and extracurricular excellence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principal -->
+
+    <section class="bg-primary text-white py-20 reveal">
+      <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+        <img
+          src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900"
+          class="rounded-xl"
+        />
+
+        <div>
+          <h2 class="text-4xl font-bold">Principal's Message</h2>
+
+          <p class="mt-6 text-gray-200 leading-8">
+            "Our mission is to nurture every student into a confident,
+            responsible, and compassionate citizen through quality education and
+            moral values."
+          </p>
+
+          <h4 class="mt-8 font-bold">- Principal</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose -->
+
+    <section class="py-20 reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl text-center font-bold text-primary">
+          Why Choose Us
+        </h2>
+
+        <div class="grid md:grid-cols-4 gap-6 mt-14">
+          <div class="bg-white shadow p-8 rounded-xl text-center">
+            <i class="bx bx-user text-5xl text-secondary"></i>
+
+            <h3 class="mt-4 font-bold">Expert Faculty</h3>
+          </div>
+
+          <div class="bg-white shadow p-8 rounded-xl text-center">
+            <i class="bx bx-laptop text-5xl text-secondary"></i>
+
+            <h3 class="mt-4 font-bold">Digital Learning</h3>
+          </div>
+
+          <div class="bg-white shadow p-8 rounded-xl text-center">
+            <i class="bx bx-building-house text-5xl text-secondary"></i>
+
+            <h3 class="mt-4 font-bold">Modern Campus</h3>
+          </div>
+
+          <div class="bg-white shadow p-8 rounded-xl text-center">
+            <i class="bx bx-medal text-5xl text-secondary"></i>
+
+            <h3 class="mt-4 font-bold">Excellent Results</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academics -->
+
+    <section id="courses" class="bg-gray-100 py-20 reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl text-center font-bold text-primary">Academics</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-14">
+          <div class="bg-white rounded-xl shadow p-8">
+            <h3 class="font-bold text-2xl">Primary School</h3>
+
+            <p class="mt-3 text-gray-600">Strong educational foundation.</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-8">
+            <h3 class="font-bold text-2xl">Middle School</h3>
+
+            <p class="mt-3 text-gray-600">Critical thinking & creativity.</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-8">
+            <h3 class="font-bold text-2xl">Higher Secondary</h3>
+
+            <p class="mt-3 text-gray-600">Science, Commerce & Arts streams.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+
+    <section class="py-20 bg-secondary text-white reveal">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center gap-10"
+      >
+        <div>
+          <h2 class="text-5xl font-bold counter" data-target="2500">0</h2>
+
+          <p>Students</p>
+        </div>
+
+        <div>
+          <h2 class="text-5xl font-bold counter" data-target="120">0</h2>
+
+          <p>Teachers</p>
+        </div>
+
+        <div>
+          <h2 class="text-5xl font-bold counter" data-target="35">0</h2>
+
+          <p>Years</p>
+        </div>
+
+        <div>
+          <h2 class="text-5xl font-bold counter" data-target="98">0</h2>
+
+          <p>% Results</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+
+    <section id="gallery" class="py-20 reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center text-primary">Gallery</h2>
+
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <img
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900"
+            class="rounded-xl"
+          />
+
+          <img
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900"
+            class="rounded-xl"
+          />
+
+          <img
+            src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=900"
+            class="rounded-xl"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- News -->
+
+    <section id="news" class="bg-gray-100 py-20 reveal">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-4xl font-bold text-primary">Latest News</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-12">
+          <div class="bg-white rounded-xl shadow p-6">
+            <h3 class="font-bold">Admissions Open</h3>
+
+            <p class="mt-3">Applications are now open for the academic year.</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-6">
+            <h3 class="font-bold">Annual Sports Day</h3>
+
+            <p class="mt-3">Join us for exciting competitions.</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow p-6">
+            <h3 class="font-bold">Science Exhibition</h3>
+
+            <p class="mt-3">Students showcase innovative projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+
+    <section id="contact" class="py-20 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl text-center font-bold text-primary">Contact Us</h2>
+
+        <div class="grid md:grid-cols-2 gap-10 mt-14">
+          <div>
+            <p>
+              <i class="bx bx-map text-secondary"></i> Coimbatore, Tamil Nadu
+            </p>
+
+            <p class="mt-5">
+              <i class="bx bx-phone text-secondary"></i> +91 9876543210
+            </p>
+
+            <p class="mt-5">
+              <i class="bx bx-envelope text-secondary"></i> info@school.com
+            </p>
+          </div>
+
+          <form class="space-y-4">
+            <input
+              type="text"
+              placeholder="Name"
+              class="w-full border p-3 rounded"
+            />
+
+            <input
+              type="email"
+              placeholder="Email"
+              class="w-full border p-3 rounded"
+            />
+
+            <textarea
+              rows="5"
+              placeholder="Message"
+              class="w-full border p-3 rounded"
+            ></textarea>
+
+            <button class="bg-primary text-white px-8 py-3 rounded">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+
+    <footer class="bg-primary text-white py-10">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold">Coimbatore Hr Sec School</h2>
+
+        <div class="flex justify-center gap-6 text-3xl mt-5">
+          <i class="bx bxl-facebook"></i>
+
+          <i class="bx bxl-instagram"></i>
+
+          <i class="bx bxl-youtube"></i>
+
+          <i class="bx bxl-twitter"></i>
+        </div>
+
+        <p class="mt-6 text-gray-300">
+          © 2026 Coimbatore Hr Sec School. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back To Top -->
+
+    <button
+      id="topBtn"
+      class="fixed bottom-6 right-6 bg-secondary text-white p-3 rounded-full shadow-lg hidden"
+    >
+      <i class="bx bx-up-arrow-alt text-2xl"></i>
+    </button>
+
+    <script>
+      const menu = document.getElementById("menuBtn");
+      const mobile = document.getElementById("mobileMenu");
+
+      menu.onclick = () => {
+        mobile.classList.toggle("hidden");
+      };
+
+      window.addEventListener("scroll", () => {
+        document.querySelectorAll(".reveal").forEach((el) => {
+          let top = el.getBoundingClientRect().top;
+          if (top < window.innerHeight - 100) {
+            el.classList.add("active");
+          }
+        });
+
+        let btn = document.getElementById("topBtn");
+
+        if (window.scrollY > 300) {
+          btn.classList.remove("hidden");
+        } else {
+          btn.classList.add("hidden");
+        }
+      });
+
+      document.getElementById("topBtn").onclick = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      };
+
+      document.querySelectorAll(".counter").forEach((counter) => {
+        let update = () => {
+          let target = +counter.dataset.target;
+
+          let count = +counter.innerText;
+
+          let inc = target / 100;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+
+            setTimeout(update, 20);
+          } else {
+            counter.innerText = target;
+          }
+        };
+
+        update();
+      });
+    </script>
+  </body>
+</html>

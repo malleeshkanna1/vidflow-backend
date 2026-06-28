@@ -161,5 +161,161 @@ const getById = async (req, res) => {
   }
 };
 
+const embed = async (req, res) => {
+  try {
+    const { id } = req.params;
 
-module.exports = { getById, update };
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid customer ID.",
+      });
+    }
+
+    const library = await Library.findOne({
+      customer_id: id,
+      isActive: true,
+    })
+      .populate({
+        path: "customer_id",
+        select:
+          "companyName username tagline website email phone address brandColor1 brandColor2 logo",
+      })
+      .populate({
+        path: "footages_id",
+        match: {
+          status: "completed",
+        },
+        select: `
+          name
+          description
+          category
+          location
+          video
+          thumbnail
+          subtitle
+          duration
+          resolution
+          fps
+          format
+          codec
+          aspectRatio
+          transcription
+          tags
+          createdAt
+        `,
+      })
+      .lean();
+
+    if (!library) {
+      return res.status(404).json({
+        success: false,
+        message: "Library not found.",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        customer: library.customer_id,
+
+        lib_heading: library.lib_heading,
+
+        description: library.description,
+
+        footages: library.footages_id,
+      },
+    });
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
+async function getEmbedData(customerId) {
+  return await Library.findOne({
+    customer_id: customerId,
+    isActive: true,
+  })
+    .populate({
+      path: "customer_id",
+      select:
+        "companyName username tagline website email phone address brandColor1 brandColor2 logo",
+    })
+    .populate({
+      path: "footages_id",
+      match: {
+        status: "completed",
+      },
+    })
+    .lean();
+}
+
+const embedJs = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const library = await getEmbedData(id);
+
+    if (!library) {
+      return res.status(404).send("Library not found");
+    }
+
+    const VIDEO_DATA = {
+      customer: library.customer_id,
+      lib_heading: library.lib_heading,
+      description: library.description,
+      footages: library.footages_id,
+      app_url : `${process.env.APP_URL}:${process.env.PORT}`
+    };
+
+    res.type("application/javascript");
+
+    res.render("embed/cyrano-video", {
+      customerId: id,
+      VIDEO_DATA,
+      layout: false,
+    });
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).send(err.message);
+  }
+};
+
+const embedCss = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const library = await getEmbedData(id);
+
+    if (!library) {
+      return res.status(404).send("Library not found");
+    }
+
+    const VIDEO_DATA = {
+      customer: library.customer_id,
+      lib_heading: library.lib_heading,
+      description: library.description,
+      footages: library.footages_id,
+    };
+
+    res.type("text/css");
+
+    res.render("embed/cyrano-video-css", {
+      customerId: id,
+      VIDEO_DATA,
+      layout: false,
+    });
+  } catch (err) {
+    console.error(err);
+
+    res.status(500).send(err.message);
+  }
+};
+
+module.exports = { getById, update,embed,embedJs,embedCss };

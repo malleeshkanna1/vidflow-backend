@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Video Library | GenovaSuite</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#6cd39b",
+              secondary: "#10332c",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-slate-50">
+    <!-- Navbar -->
+    <nav class="w-full bg-white shadow z-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center gap-2">
+            <div class="bg-primary p-2 rounded-lg">
+              <i class="bx bxs-clinic text-secondary text-2xl"></i>
+            </div>
+
+            <h1 class="text-2xl font-bold text-secondary">GenovaSuite</h1>
+          </div>
+
+          <div class="hidden md:flex space-x-8 font-medium">
+            <a href="./index.html" class="hover:text-primary">Home</a>
+
+            <a href="./index.html#services" class="hover:text-primary">Services</a>
+
+            <a href="./index.html#doctors" class="hover:text-primary">Doctors</a>
+            <a href="./patient-video-library.html" class="hover:text-primary">Patien Video Library</a>
+
+            <a href="./index.html#about" class="hover:text-primary">About</a>
+
+            <a href="./index.html#contact" class="hover:text-primary">Contact</a>
+          </div>
+
+          <button id="menuBtn" class="md:hidden">
+            <i class="bx bx-menu text-3xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="hidden md:hidden bg-white shadow">
+        <div class="flex flex-col p-5 space-y-4">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#services">Services</a>
+          <a href="./index.html#doctors">Doctors</a>
+          <a href="./index.html#about">About</a>
+          <a href="./index.html#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Videos -->
+    <main class="pt-12">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="bg-white rounded-2xl shadow-sm border p-6">
+          <div class="flex items-center gap-3 mb-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center"
+            >
+              <i class="bx bx-video text-secondary text-2xl"></i>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold text-secondary">Video Library</h3>
+
+              <p class="text-gray-500 text-sm">
+                Explore patient education resources.
+              </p>
+            </div>
+          </div>
+
+          <!-- Video Section -->
+          <div id="videos-section"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500 text-sm">
+      © 2026 GenovaSuite Hospital. All Rights Reserved.
+    </footer>
+
+    <!-- Cyrano Video Embed -->
+    <script src="http://localhost:5000/embed/js/6a3feffcadd78c697e122bbd"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new CyranoVideo({
+          elem: "#videos-section",
+        });
+      });
+    </script>
+  </body>
+</html>

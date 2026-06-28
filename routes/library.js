@@ -2,9 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {create,getById,update} = require("../controllers/library.controller");
-
-
+const {getById,update} = require("../controllers/library.controller");
 
 router.get(
   "/:id",
@@ -15,5 +13,6 @@ router.post(
   "/update",
   update
 );
+
 
 module.exports = router;

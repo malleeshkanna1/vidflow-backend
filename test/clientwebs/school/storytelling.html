@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Storytelling | Coimbatore Hr Sec School</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0e2e54",
+              secondary: "#2a80b3",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <nav class="w-full bg-white shadow z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+        <div>
+          <h1 class="text-2xl font-bold text-primary">
+            Coimbatore Hr Sec School
+          </h1>
+        </div>
+
+        <ul class="hidden md:flex space-x-7 font-medium">
+          <li><a href="#home" class="hover:text-secondary">Home</a></li>
+
+          <li><a href="#about" class="hover:text-secondary">About</a></li>
+
+          <li><a href="./storytelling.html" class="hover:text-secondary">Storytelling</a></li>
+
+          <li><a href="#courses" class="hover:text-secondary">Academics</a></li>
+
+          <li><a href="#gallery" class="hover:text-secondary">Gallery</a></li>
+
+          <li><a href="#news" class="hover:text-secondary">News</a></li>
+
+          <li><a href="#contact" class="hover:text-secondary">Contact</a></li>
+        </ul>
+
+        <button id="menuBtn" class="md:hidden text-3xl text-primary">
+          <i class="bx bx-menu"></i>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="hidden bg-primary text-white">
+        <a href="#home" class="block p-4">Home</a>
+
+        <a href="#about" class="block p-4">About</a>
+
+        <a href="#courses" class="block p-4">Academics</a>
+
+        <a href="#gallery" class="block p-4">Gallery</a>
+
+        <a href="#news" class="block p-4">News</a>
+
+        <a href="#contact" class="block p-4">Contact</a>
+      </div>
+    </nav>
+    <!-- Hero -->
+    <section class="bg-primary text-white py-16 pt-28">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold">Storytelling Videos</h1>
+
+        <p class="mt-5 text-blue-100 text-lg">
+          Watch engaging educational stories specially curated for our students
+          to inspire learning, creativity, and imagination.
+        </p>
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="bg-white rounded-2xl shadow-lg p-6">
+          <div id="videos-section"></div>
+        </div>
+      </div>
+    </section>
+
+      <footer class="bg-primary text-white py-10">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold">Coimbatore Hr Sec School</h2>
+
+        <div class="flex justify-center gap-6 text-3xl mt-5">
+          <i class="bx bxl-facebook"></i>
+
+          <i class="bx bxl-instagram"></i>
+
+          <i class="bx bxl-youtube"></i>
+
+          <i class="bx bxl-twitter"></i>
+        </div>
+
+        <p class="mt-6 text-gray-300">
+          © 2026 Coimbatore Hr Sec School. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Cyrano Video -->
+    <script src="http://localhost:5000/embed/js/6a40b33b93c71d10c136af87"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        new CyranoVideo({
+          elem: "#videos-section",
+        });
+      });
+    </script>
+  </body>
+</html>
