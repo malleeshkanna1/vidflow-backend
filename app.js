@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var footageRouter = require('./routes/footages');
 var customersRouter = require('./routes/customers');
 var libraryRouter = require('./routes/library');
+var filesRouter = require('./routes/files');
 const mongooseConn = require('./config/db');
 require("./workers/footage.worker");
 
@@ -31,6 +32,7 @@ app.use('/users', usersRouter);
 app.use('/footages', footageRouter);
 app.use('/customers', customersRouter);
 app.use('/library', libraryRouter);
+app.use('/files', filesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -212,6 +212,64 @@ ${video.transcription}
       return this.emptyMetadata();
     }
   }
+
+  async generateFileMetadata(originalFilename, description) {
+
+    const prompt = `
+Generate metadata for this uploaded file.
+
+Original Filename:
+${originalFilename}
+
+Description:
+${description}
+
+Return ONLY JSON.
+
+{
+    "name":"",
+    "tags":[""],
+    "keywords":[""]
+}
+
+Rules
+
+- Create a professional name.
+
+- Use filename and description.
+
+- tags maximum 10.
+
+- keywords maximum 20.
+
+No markdown.
+`;
+
+    const completion =
+        await this.client.chat.completions.create({
+
+            model: "llama-3.3-70b-versatile",
+
+            temperature: 0.2,
+
+            response_format: {
+                type: "json_object"
+            },
+
+            messages: [
+                {
+                    role: "user",
+                    content: prompt
+                }
+            ]
+
+        });
+
+    return JSON.parse(
+        completion.choices[0].message.content
+    );
+
+}
 }
 
 module.exports = new GroqService();

@@ -71,4 +71,16 @@ module.exports = {
     ["image/"],
     5 * 1024 * 1024 // 5 MB
   ),
+
+  fileUpload: createUpload(
+    "files",
+    [
+        "application/",
+        "image/",
+        "video/",
+        "audio/",
+        "text/"
+    ],
+    1024 * 1024 * 500
+)
 };
